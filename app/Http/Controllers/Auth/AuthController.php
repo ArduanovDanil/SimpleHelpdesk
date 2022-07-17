@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Actions\Auth\RegisterAction;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\AuthenticateRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 
 class AuthController extends Controller
@@ -18,6 +19,14 @@ class AuthController extends Controller
         app(RegisterAction::class)->handle($requestData);
 
         return response()->noContent(201);
+
+    }
+
+    public function authenticate(AuthenticateRequest $request)
+    {
+
+        $requestData = $request->validated();
+
 
     }
 
