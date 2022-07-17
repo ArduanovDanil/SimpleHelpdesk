@@ -6,12 +6,16 @@ use App\Actions\AbstractAction;
 use App\Enums\Responses\ErrorEnum;
 use App\Exceptions\ApiErrorException;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthenticateAction extends AbstractAction
 {
-    public function handle($requestData)
+    /**
+     * @param array $requestData
+     * @return string
+     * @throws ApiErrorException
+     */
+    public function handle(array $requestData): string
     {
         $requestData = collect($requestData);
         $email = $requestData->get('email');
@@ -28,6 +32,8 @@ class AuthenticateAction extends AbstractAction
                 []
             );
         }
+
+        $user->tokens()->delete();
 
         return $user->createToken('access_token')->plainTextToken;
 
