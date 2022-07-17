@@ -10,13 +10,14 @@ use App\Http\Requests\Lk\Tickets\CreateTicketRequest;
 use App\Http\Requests\Lk\Tickets\UpdateTicketRequest;
 use App\Http\Resources\Lk\TicketResource;
 use App\Models\Ticket;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Exception;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class TicketsController extends Controller
 {
+    private const DEFAULT_PER_PAGE_COUNT = 15;
+
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +25,13 @@ class TicketsController extends Controller
      */
     public function index(): AnonymousResourceCollection
     {
-        $tickets = Ticket::all();
+        $per_page = request()->input('per_page', self::DEFAULT_PER_PAGE_COUNT);
+
+        $tickets = QueryBuilder::for(Ticket::class)
+            ->allowedFilters(['title', 'message'])
+            ->allowedSorts(['title', 'message'])
+            ->paginate($per_page);
+
         return TicketResource::collection($tickets);
     }
 
