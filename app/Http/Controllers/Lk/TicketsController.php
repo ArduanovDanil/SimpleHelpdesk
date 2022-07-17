@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers\Lk;
 
+use App\Actions\Lk\Ticket\CreateTicketAction;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Lk\Tickets\CreateTicketRequest;
+use App\Http\Resources\Lk\TicketResource;
+use App\Models\Ticket;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class TicketsController extends Controller
@@ -20,11 +25,16 @@ class TicketsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  CreateTicketRequest  $request
+     * @return TicketResource
      */
-    public function store(Request $request)
+    public function store(CreateTicketRequest $request): TicketResource
     {
+        $requestData = $request->validated();
+
+        $ticket = app(CreateTicketAction::class)->handle($requestData);
+
+        return new TicketResource($ticket);
 
     }
 
