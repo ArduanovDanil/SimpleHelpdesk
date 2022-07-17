@@ -3,22 +3,29 @@
 namespace App\Http\Controllers\Lk;
 
 use App\Actions\Lk\Ticket\CreateTicketAction;
+use App\Actions\Lk\Ticket\UpdateTicketAction;
+use App\Exceptions\ApiErrorException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Lk\Tickets\CreateTicketRequest;
+use App\Http\Requests\Lk\Tickets\UpdateTicketRequest;
 use App\Http\Resources\Lk\TicketResource;
 use App\Models\Ticket;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Exception;
 
 class TicketsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return AnonymousResourceCollection
      */
-    public function index()
+    public function index(): AnonymousResourceCollection
     {
+        $tickets = Ticket::all();
+        return TicketResource::collection($tickets);
     }
 
 
@@ -41,23 +48,31 @@ class TicketsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  Ticket $ticket
+     * @return TicketResource
      */
-    public function show($id)
+    public function show(Ticket $ticket): TicketResource
     {
+        return new TicketResource($ticket);
+
     }
 
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param UpdateTicketRequest $request
+     * @param Ticket $ticket
+     * @return TicketResource
+     * @throws ApiErrorException|Exception
      */
-    public function update(Request $request, $id)
+    public function update(UpdateTicketRequest $request, Ticket $ticket): TicketResource
     {
+
+        $requestData = $request->validated();
+        $ticket = app(UpdateTicketAction::class)->handle($requestData, $ticket);
+
+        return new TicketResource($ticket);
     }
 
     /**
@@ -68,5 +83,6 @@ class TicketsController extends Controller
      */
     public function destroy($id)
     {
+
     }
 }
