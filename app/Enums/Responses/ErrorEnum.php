@@ -8,4 +8,6 @@ class ErrorEnum
 
     public const UNEXPECTED_ERROR = 1001;
 
+    public const WRONG_DATA = 1002;
+
 }
