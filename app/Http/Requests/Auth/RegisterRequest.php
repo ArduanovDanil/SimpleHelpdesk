@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Auth;
 
 use App\Http\Requests\PublicRequest;
+use Illuminate\Validation\Rules\Password;
 
 class RegisterRequest extends PublicRequest
 {
@@ -24,9 +25,13 @@ class RegisterRequest extends PublicRequest
     public function rules()
     {
         return [
-            'email' => 'required',
-            'password' => 'required|password',
-            'confirm_password' => 'required',
+            'email' => 'required|unique:users,email',
+            'password' => [
+                'required',
+                'confirmed',
+                Password::min(8),
+            ],
+            'password_confirmation' => 'required',
         ];
     }
 }
