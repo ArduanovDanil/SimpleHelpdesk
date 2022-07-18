@@ -1,0 +1,9 @@
+properties:
+  title:
+      title: Заголовок
+      type: string
+      example: Test title
+  message:
+      title: Сообщение
+      type: string
+      example: Test message

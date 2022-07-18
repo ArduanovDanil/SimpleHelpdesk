@@ -1,0 +1,8 @@
+properties:
+  data:
+    type: object
+    example:
+      id: 27
+      title: Magni et ipsa voluptatibus.
+      message: Provident ratione libero deserunt magnam nam aut. Nemo id odit nisi
+        nam expedita quia ut.
