@@ -48,6 +48,13 @@ get:
             $ref: "../../responses/successes/lk/tickets-index.yaml"
       description: Тикеты получены
 
+  401:
+    content:
+      application/json:
+        schema:
+          $ref: "../../responses/errors/401.yaml"
+    description: Пользователь не авторизован!
+
 
 post:
   tags:
