@@ -12,4 +12,6 @@ class ErrorEnum
 
     public const UNEXPECTED_ERROR = 10003;
 
+    public const NOT_FOUND = 10004;
+
 }

@@ -1,0 +1,34 @@
+post:
+  tags:
+    - Auth
+  summary: Аутентификация пользователя
+  operationId: auth_login
+
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../requests/auth/login.yaml"
+
+  responses:
+    200:
+      content:
+        application/json:
+          schema:
+            $ref: "../../responses/successes/auth/token.yaml"
+      description: Пользователь успешно авторизован!
+
+    422:
+      content:
+        application/json:
+          schema:
+            $ref: "../../responses/errors/422.yaml"
+      description: Ошибка валидации
+
+    422 (Неверные данные):
+      content:
+        application/json:
+          schema:
+            $ref: "../../responses/errors/auth/wrong-login-data.yaml"
+      description: Неверные данные

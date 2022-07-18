@@ -2,20 +2,10 @@
 
 namespace App\Http\Requests\Lk\Tickets;
 
-use App\Http\Requests\PublicRequest;
+use App\Http\Requests\Lk\LkRequest;
 
-class CreateTicketRequest extends PublicRequest
+class CreateTicketRequest extends LkRequest
 {
-
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
 
     /**
      * Get the validation rules that apply to the request.

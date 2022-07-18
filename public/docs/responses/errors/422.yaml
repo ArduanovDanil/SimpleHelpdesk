@@ -1,0 +1,17 @@
+properties:
+  code:
+    type: string
+    example: validation_error
+  message:
+    type: string
+    example: Ошибка валидации
+  errors:
+    type: array
+    example:
+      [
+        { field: email, text: Поле email обязательно для заполнения. },
+      ]
+  internal_code:
+    type: integer
+    format: int64
+    example: 10000

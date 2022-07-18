@@ -1,0 +1,126 @@
+get:
+  tags:
+    - Lk
+  summary: Получить тикет
+  operationId: lk-tickets-show
+  security:
+    - bearerAuth: [ ]
+
+  parameters:
+
+    - name: ticket_id
+      in: path
+      description: ID тикета
+      required: true
+      type: integer
+      example: 27
+
+  responses:
+
+    200:
+      content:
+        application/json:
+          schema:
+            $ref: "../../responses/successes/lk/tickets-show.yaml"
+      description: Тикет получен
+
+    401:
+      content:
+        application/json:
+          schema:
+            $ref: "../../responses/errors/401.yaml"
+      description: Пользователь не авторизован!
+
+    404:
+      content:
+        application/json:
+          schema:
+            $ref: "../../responses/errors/404.yaml"
+        description: Тикет не найден
+
+put:
+  tags:
+    - Lk
+  summary: Обновить тикет
+  operationId: lk-tickets-update
+  security:
+    - bearerAuth: [ ]
+
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../requests/lk/ticket-update.yaml"
+
+  parameters:
+
+    - name: ticket_id
+      in: path
+      description: ID тикета
+      required: true
+      type: integer
+      example: 27
+
+  responses:
+
+    201:
+      content:
+        application/json:
+          schema:
+            $ref: "../../responses/successes/lk/tickets-show.yaml"
+      description: Тикет получен
+
+    401:
+      content:
+        application/json:
+          schema:
+            $ref: "../../responses/errors/401.yaml"
+      description: Пользователь не авторизован!
+
+    404:
+      content:
+        application/json:
+          schema:
+            $ref: "../../responses/errors/404.yaml"
+        description: Тикет не найден
+
+
+
+
+
+delete:
+  tags:
+    - Lk
+  summary: Удалить тикет
+  operationId: lk-tickets-delete
+  security:
+    - bearerAuth: [ ]
+
+  parameters:
+
+    - name: ticket_id
+      in: path
+      description: ID тикета
+      required: true
+      type: integer
+      example: 27
+
+  responses:
+    204:
+      content:
+      description: Тикет удален
+
+    401:
+      content:
+        application/json:
+          schema:
+            $ref: "../../responses/errors/401.yaml"
+      description: Пользователь не авторизован!
+
+    404:
+      content:
+        application/json:
+          schema:
+            $ref: "../../responses/errors/404.yaml"
+        description: Тикет не найден

@@ -1,0 +1,14 @@
+properties:
+  code:
+    type: string
+    example: unauthorized_user
+  message:
+    type: string
+    example: Пользователь не авторизован
+  errors:
+    type: array
+    example: [ ]
+  internal_code:
+    type: integer
+    format: int64
+    example: 10001

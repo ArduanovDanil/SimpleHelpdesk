@@ -1,0 +1,41 @@
+properties:
+  data:
+    type: array
+    example:
+      - id: 2
+        title: Ipsam consectetur ut qui.
+        message: Pariatur perspiciatis ipsum molestiae fugiat. Dolorem ducimus dicta
+          voluptatibus mollitia. Odio dicta dolorem eaque ab molestias dicta rerum. Et eius
+          magnam labore ipsam atque mollitia quia.
+      - id: 3
+        title: Title psam consectetur ut qui.
+        message: Message pariatur perspiciatis ipsum molestiae fugiat. Dolorem ducimus dicta
+          voluptatibus mollitia. Odio dicta dolorem eaque ab molestias dicta rerum. Et eius
+          magnam labore ipsam atque mollitia quia.
+  links:
+    type: object
+    example:
+      first: http://localhost/api/v1/lk/tickets?page=1
+      last: http://localhost/api/v1/lk/tickets?page=1
+      prev:
+      next:
+  meta:
+    type: object
+    example:
+      current_page: 1
+      from: 1
+      last_page: 1
+      links:
+        - url:
+          label: "&laquo; Назад"
+          active: false
+        - url: http://localhost/api/v1/lk/tickets?page=1
+          label: '1'
+          active: true
+        - url:
+          label: Вперёд &raquo;
+          active: false
+      path: http://localhost/api/v1/lk/tickets
+      per_page: 9
+      to: 1
+      total: 1

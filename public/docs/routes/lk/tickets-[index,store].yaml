@@ -1,0 +1,87 @@
+get:
+  tags:
+    - Lk
+  summary: Получить тикеты
+  operationId: lk-tickets-index
+  security:
+    - bearerAuth: [ ]
+
+  parameters:
+    - name: filter[title]
+      in: query
+      description: Заголовок
+      required: false
+      type: string
+      example: Проблема
+    - name: filter[message]
+      in: query
+      description: Заголовок
+      required: false
+      type: string
+      example: Тело сообщения
+    - name: sort[title]
+      in: query
+      description: Параметр сортировки
+      type: string
+      example: -title
+    - name: sort[message]
+      in: query
+      description: Параметр сортировки
+      type: string
+      example: -message
+    - name: page
+      in: query
+      description: Текущая страница пагинации
+      type: integer
+      example: 1
+    - name: per_page
+      in: query
+      description: Количество тикетов на странице
+      type: integer
+      example: 9
+
+  responses:
+    200:
+      content:
+        application/json:
+          schema:
+            $ref: "../../responses/successes/lk/tickets-index.yaml"
+      description: Тикеты получены
+
+    401:
+      content:
+        application/json:
+          schema:
+            $ref: "../../responses/errors/401.yaml"
+      description: Пользователь не авторизован!
+
+
+post:
+  tags:
+    - Lk
+  summary: Создать тикет
+  operationId: lk-tickets-store
+  security:
+    - bearerAuth: [ ]
+
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../requests/lk/ticket-store.yaml"
+
+  responses:
+    201:
+      content:
+        application/json:
+          schema:
+            $ref: "../../responses/successes/lk/tickets-store.yaml"
+      description: Тикет создан
+
+    401:
+      content:
+        application/json:
+          schema:
+            $ref: "../../responses/errors/401.yaml"
+      description: Пользователь не авторизован!
