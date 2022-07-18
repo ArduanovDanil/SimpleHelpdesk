@@ -1,0 +1,25 @@
+post:
+  tags:
+    - Auth
+  summary: Регистрация
+  operationId: auth_register
+
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../requests/auth/register.yaml"
+
+  responses:
+    201:
+      content:
+      description: Пользователь зарегистрирован
+
+    422:
+      content:
+        application/json:
+          schema:
+            $ref: "../../responses/errors/422.yaml"
+      description: Поле email обязательно для заполнения
+

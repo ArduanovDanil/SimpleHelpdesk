@@ -1,0 +1,5 @@
+properties:
+  data:
+    type: object
+    example:
+      access_token: 11|Jlu8lU9N3g7JIxxEWzTY2vX2x2vYPbpUJDMgPMhG

@@ -1,0 +1,35 @@
+openapi: 3.0.0
+info:
+  title: SimpleHelpdesk. API документация
+  contact:
+    email: example@example.ru
+  version: 1.0.0
+servers:
+  - url: http://127.0.0.1/api/v1
+    description: Сервер API v1 (localhost)
+paths:
+
+  /auth/register:
+    $ref: "./routes/auth/register.yaml"
+
+  /auth/authenticate:
+    $ref: "./routes/auth/authenticate.yaml"
+
+
+
+
+
+
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+tags:
+  - name: Auth
+    description: Аутентификация
+  - name: Lk
+    description: Личный кабинет

@@ -1,0 +1,20 @@
+properties:
+  email:
+    title: Почта
+    type: string
+    required: true
+    format: email
+    example: auth-register@example.com
+
+  password:
+    title: Пароль
+    required: true
+    type: password
+    example: password
+
+  password_confirmation:
+    title: Подвторение пароля
+    required: true
+    type: password
+    example: password
+

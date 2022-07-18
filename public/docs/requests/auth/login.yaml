@@ -1,0 +1,10 @@
+properties:
+  login:
+    title: Login
+    type: string
+    example: auth-login@example.com
+  password:
+    title: Пароль
+    type: string
+    format: password
+    example: password

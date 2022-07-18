@@ -1,0 +1,14 @@
+properties:
+  code:
+    type: string
+    example: wrong_data
+  message:
+    type: string
+    example: Неверный логин или пароль.
+  errors:
+    type: array
+    example: [ ]
+  internal_code:
+    type: integer
+    format: int64
+    example: 10002

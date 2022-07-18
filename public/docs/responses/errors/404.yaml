@@ -1,0 +1,14 @@
+properties:
+  code:
+    type: string
+    example: not_found
+  message:
+    type: string
+    example: Ресурс не найден
+  errors:
+    type: array
+    example: [ ]
+  internal_code:
+    type: integer
+    format: int64
+    example: 10004
