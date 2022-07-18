@@ -5,7 +5,7 @@ namespace App\Actions\Auth;
 use App\Actions\AbstractAction;
 use App\Enums\Responses\ErrorEnum;
 use App\Exceptions\ApiErrorException;
-use App\Models\User;
+use App\Models\User\User;
 use Illuminate\Support\Facades\Hash;
 
 class AuthenticateAction extends AbstractAction
