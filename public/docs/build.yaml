@@ -15,9 +15,11 @@ paths:
   /auth/authenticate:
     $ref: "./routes/auth/authenticate.yaml"
 
+  /lk/tickets:
+    $ref: "./routes/lk/tickets-[index,store].yaml"
 
-
-
+  /lk/tickets/{ticket_id}:
+    $ref: "./routes/lk/tickets-[show,update,destroy].yaml"
 
 
 
