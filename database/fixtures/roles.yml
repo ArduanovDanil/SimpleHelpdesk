@@ -1,0 +1,10 @@
+- name: Администратор
+  code: admin
+- name: Модератор
+  code: moderator
+- name: Старший менеджер
+  code: head_manager
+- name: Менеджер
+  code: manager
+- name: Клиент
+  code: client
