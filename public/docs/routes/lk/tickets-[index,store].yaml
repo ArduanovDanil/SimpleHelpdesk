@@ -19,18 +19,6 @@ get:
       required: false
       type: string
       example: Тело сообщения
-    - name: filter[location]
-      in: query
-      description: Коды местоположений
-      required: false
-      type: string
-      example: gorodec
-    - name: filter[tag]
-      in: query
-      description: ID тегов
-      required: false
-      type: string
-      example: 1,2,3
     - name: sort[title]
       in: query
       description: Параметр сортировки
