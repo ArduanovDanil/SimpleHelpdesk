@@ -2,7 +2,7 @@ properties:
   email:
     title: Email
     type: string
-    example: auth-login@example.com
+    example: auth-register@example.com
   password:
     title: Пароль
     type: string
